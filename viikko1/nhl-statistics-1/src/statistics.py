@@ -32,7 +32,10 @@ class Statistics:
 
         result = []
         i = 0
-        while i <= how_many:
+        # pohjaohjelmassa on tässä kohden virhe: palauttaa 4, vaikka laittaisi 3
+        # while i <= how_many:
+        # muutettu:
+        while i < how_many:
             result.append(sorted_players[i])
             i += 1
 
