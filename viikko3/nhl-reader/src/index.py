@@ -21,6 +21,8 @@ def main():
             )
 
             players.append(player)
+    
+    players = sorted(players, key=lambda player: player.assists+player.goals, reverse=True)
 
     print("Players from FIN", datetime.datetime.now())
 
