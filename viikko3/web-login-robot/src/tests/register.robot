@@ -47,6 +47,33 @@ Register With Ununique Username
     Submit Credentials
     Register Should Fail With Message  Username must be unique
 
+Login After Successful Registration
+    Set Username  maiju
+    Set Password  maiju123
+    Set Password Confirmation  maiju123
+    Submit Credentials
+    Register Should Succeed
+    Go To Login Page
+    Login Page Should Be Open
+    Set Username  kalle
+    Set Password  kalle123
+    Submit Login Credentials
+    Login Should Succeed
+
+
+Login After Failed Registration
+    Set Username  tiina
+    Set Password  tiina123
+    Set Password Confirmation  maiju123
+    Submit Credentials
+    Register Should Fail With Message  Password and confirmation don't match
+    Go To Login Page
+    Login Page Should Be Open
+    Set Username  tiina
+    Set Password  tiina123
+    Submit Login Credentials
+    Login Should Fail With Message  Invalid username or password
+
 *** Keywords ***
 Register Should Succeed
     Welcome Page Should Be Open
@@ -58,6 +85,9 @@ Register Should Fail With Message
 
 Submit Credentials
     Click Button  Register
+
+Submit Login Credentials
+    Click Button  Login
 
 Set Username
     [Arguments]  ${username}
@@ -75,3 +105,11 @@ Create User And Go To Register Page
     Create User  kalle  kalle123
     Go To Register Page
     Register Page Should Be Open
+
+Login Should Succeed
+    Main Page Should Be Open
+
+Login Should Fail With Message
+    [Arguments]  ${message}
+    Login Page Should Be Open
+    Page Should Contain  ${message}
