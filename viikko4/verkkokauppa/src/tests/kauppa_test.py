@@ -81,8 +81,8 @@ class TestKauppa(unittest.TestCase):
         self.kauppa.tilimaksu("pekka", "12345")
 
         self.pankki_mock.tilisiirto.assert_called_with("pekka", 42, "12345", "33333-44455", 5)
-""" 
-    def test_aloita_asiointi_nollaa_edellisen_ostoksen_hinnan(self):
+ 
+    def test_aloita_asiointi_nollaa_edellisen_ostoksen_tiedot(self):
         #tehdään ensimmäinen ostos, jonka hinta on 5
         self.kauppa.aloita_asiointi()
         self.kauppa.lisaa_koriin(1)
@@ -91,8 +91,34 @@ class TestKauppa(unittest.TestCase):
         #toinen ostos, jonka hinta on 8
         self.kauppa.aloita_asiointi()
         self.kauppa.lisaa_koriin(2)
+        self.kauppa.tilimaksu("pekka", "12345")
+
+        #ostosten summan pitäisi olla nyt 8
+        self.pankki_mock.tilisiirto.assert_called_with(ANY, ANY, ANY, ANY, 8)
+
+    def test_pyydetaan_uusi_viite_joka_maksuun(self):
+        #tehdään ensimmäinen ostos
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.tilimaksu("pekka", "12345")
+
+        #viitegeneraattoria kutsuttu kerran
+        self.assertEqual(self.viitegeneraattori_mock.uusi.call_count, 1)
+
+        #toinen ostos
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(2)
+        self.kauppa.tilimaksu("sirpa", "54321")
+
+        #viitegeneraattoria kutsuttu kaksi kertaa
+        self.assertEqual(self.viitegeneraattori_mock.uusi.call_count, 2)
+
+        #toinen ostos
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
         self.kauppa.tilimaksu("jutta", "56789")
 
-        #hinnan pitäisi olla nyt 8
-        self.pankki_mock.tilisiirto.assert_called_with("jutta", 42, "56789", "33333-44455", 8)
-"""
+        #viitegeneraattoria kutsuttu kaksi kertaa
+        self.assertEqual(self.viitegeneraattori_mock.uusi.call_count, 3)
+
+        
