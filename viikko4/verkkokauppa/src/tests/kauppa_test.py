@@ -66,7 +66,7 @@ class TestKauppa(unittest.TestCase):
 
         self.pankki_mock.tilisiirto.assert_called_with("pekka", 42, "12345", "33333-44455", 13)
 
-    def test_ostaessa_kaksi_eri_tuotetta_tilisiirtoa_kutsutaan_oikeilla_argumenteilla(self):
+    def test_ostaessa_kaksi_samaa_tuotetta_tilisiirtoa_kutsutaan_oikeilla_argumenteilla(self):
         self.kauppa.aloita_asiointi()
         self.kauppa.lisaa_koriin(1)
         self.kauppa.lisaa_koriin(1)
@@ -81,3 +81,18 @@ class TestKauppa(unittest.TestCase):
         self.kauppa.tilimaksu("pekka", "12345")
 
         self.pankki_mock.tilisiirto.assert_called_with("pekka", 42, "12345", "33333-44455", 5)
+""" 
+    def test_aloita_asiointi_nollaa_edellisen_ostoksen_hinnan(self):
+        #tehdään ensimmäinen ostos, jonka hinta on 5
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.tilimaksu("pekka", "12345")
+
+        #toinen ostos, jonka hinta on 8
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(2)
+        self.kauppa.tilimaksu("jutta", "56789")
+
+        #hinnan pitäisi olla nyt 8
+        self.pankki_mock.tilisiirto.assert_called_with("jutta", 42, "56789", "33333-44455", 8)
+"""
