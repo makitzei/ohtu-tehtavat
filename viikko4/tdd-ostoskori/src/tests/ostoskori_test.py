@@ -83,4 +83,13 @@ class TestOstoskori(unittest.TestCase):
 
         # testaa että metodin palauttaman listan pituus 2
         self.assertEqual(len(ostokset), 2)
+    
+    # step 11
+    def test_kahden_saman_tuotteen_lisaamisen_jalkeen_korissa_yksi_ostos(self):
+        self.kori.lisaa_tuote(self.maito)
+        self.kori.lisaa_tuote(self.maito)
+
+        ostokset = self.kori.ostokset()
+
+        self.assertEqual(len(ostokset), 1)
 
