@@ -12,6 +12,8 @@ class Ostoskori:
         # samoin jos korissa on 1 kpl tuotetta "maito" ja 1 kpl tuotetta "juusto", tulee metodin palauttaa 2 
         if len(self.ostokset) == 0:
             return 0
+        lkm = sum(ostos.lukumaara() for ostos in self.ostokset)
+        return lkm
 
     def hinta(self):
         if len(self.ostokset) == 0:
@@ -20,7 +22,7 @@ class Ostoskori:
 
     def lisaa_tuote(self, lisattava: Tuote):
         # lisää tuotteen
-        pass
+        self.ostokset.append(Ostos(lisattava))
 
     def poista_tuote(self, poistettava: Tuote):
         # poistaa tuotteen
