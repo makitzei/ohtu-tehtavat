@@ -121,4 +121,11 @@ class TestKauppa(unittest.TestCase):
         #viitegeneraattoria kutsuttu kaksi kertaa
         self.assertEqual(self.viitegeneraattori_mock.uusi.call_count, 3)
 
-        
+    def test_poistettaessa_toinen_korin_tuotteista_hinta_on_oikein(self):
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.lisaa_koriin(2)
+        self.kauppa.poista_korista(1)
+        self.kauppa.tilimaksu("jutta", "56789")
+
+        self.pankki_mock.tilisiirto.assert_called_with(ANY, ANY, ANY, ANY, 8)    
