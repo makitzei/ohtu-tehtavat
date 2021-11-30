@@ -107,3 +107,5 @@ class Kumoa:
     
     def suorita(self):
         self.sovellus.aseta_arvo(666)
+
+# just adding a comment to get commit with the proper username
