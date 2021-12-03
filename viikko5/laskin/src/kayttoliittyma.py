@@ -1,7 +1,6 @@
 from enum import Enum
 from tkinter import ttk, constants, StringVar
 
-
 class Komento(Enum):
     SUMMA = 1
     EROTUS = 2
@@ -76,13 +75,17 @@ class Kayttoliittyma:
         self._syote_kentta.delete(0, constants.END)
         self._tulos_var.set(self._sovellus.tulos)
 
+edelliset = [0]
+
 class Summa:
     def __init__(self, sovellus, syote):
         self.sovellus = sovellus
         self.syote = syote
     
     def suorita(self):
+        edelliset.append(self.sovellus.tulos)
         self.sovellus.plus(int(self.syote()))
+    
 
 class Erotus:
     def __init__(self, sovellus, syote):
@@ -90,6 +93,7 @@ class Erotus:
         self.syote = syote
     
     def suorita(self):
+        edelliset.append(self.sovellus.tulos)
         self.sovellus.miinus(int(self.syote()))
 
 class Nollaus:
@@ -98,6 +102,7 @@ class Nollaus:
         self.syote = syote
     
     def suorita(self):
+        edelliset.append(self.sovellus.tulos)
         self.sovellus.nollaa()
 
 class Kumoa:
@@ -106,6 +111,7 @@ class Kumoa:
         self.syote = syote
     
     def suorita(self):
-        self.sovellus.aseta_arvo(666)
-
-# just adding a comment to get commit with the proper username
+        self.sovellus.aseta_arvo(edelliset.pop())
+        if len(edelliset) == 0:
+            edelliset.append(0)
+            
