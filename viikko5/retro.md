@@ -1,3 +1,7 @@
-# Start, Stop, Continue, More of, Less of Wheel
+# Retrospektiivitekniikoita
 
-Kohta kerron tästä lisää.
+Työskentelytiimi voi edellisen työskentelyjakson palautteenantotilaisuudessa eli retrospektiivissä jäsentää palautteenantoa muutamilla eri tekniikoilla. 
+
+*Start, Stop, Continue, More of, Less of Wheel* -tekniikassa fläppitaululle piirretään suuri ympyrän ja jaetaan sen viiteen sektoriin, jotka nimetään tekniikan nimen mukaisesti. Tiimiläisiltä kysytään, mitä uutta tai erilaista tiimin kannattaisi seuraavassa tarkastelujaksossa aloittaa (start), minkä tekeminen olisi syytä lopettaa (stop), mitä toimivaa kannattaa jatkaa (continue), mitä tulisi tehdä enemmän (more of) ja mitä vähemmän (less of). Piirakkakaavioon kerätään sitten kommentteja tiimiltä ja mietitään, mihin kategoriaan palaute kuuluu. Kun kaikki palaute on kerätty, keskustellaan saadusta kaaviosta. Lyhyimmillään palautteenantotilaisuuteen menee kymmenisen minuuttia, mutta suuremmilla ryhmillä tai pidemmällä tarkastelujaksolla puolikin tuntia.
+
+*Glad, Sad, Mad* -tekniikassa kerätään noin vartin ajan työskentelyjakson aikana tehdyt ongelmat, muutokset ja havainnot yhdessä listaksi. Sen jälkeen toisen vartin ajan kaikki havainnot kategorisoidaan joko iloa, surua tai vihaa tuottaviksi, esimerkiksi asettamalla havainnon sisältävä lappu valkotaululle oikeaan kategoriaan. Muutamia minuutteja käytetään samantyyppisten havaintojen niputtamiseen. Havainnoista äänestetään ne, joista halutaan keskustella tarkemmin. Havainnot keskustellaan läpi äänestetyimmästä lähtien seuraavaa työskentelyjaksoa silmällä pitäen. Keskustelua jatketaan, kunnes aiheet on käyty läpi tai yksi tunti on täynnä.
